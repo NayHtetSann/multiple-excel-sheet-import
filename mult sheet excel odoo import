@@ -1,0 +1,75 @@
+import_file = your file
+header_line = True
+lines = base64.decodestring(import_file)
+wb = open_workbook(file_contents=lines)
+excel_rows,excel_rows1,excel_rows2,excel_rows3= self.get_excel_datas(wb.sheets())
+
+def get_excel_datas(self, sheets):
+        result = []
+        result1 = []
+        result2 = []
+        result3 = []
+        sheets = np.array(sheets)
+        # for s in sheets:
+        s = sheets[0]
+        s1 = sheets[1]
+        s2 = sheets[2]
+        s3 = sheets[3]
+        headers = []
+        headers1 = []
+        headers2 = []
+        headers3 = []
+        header_row = 0
+        header_row1 = 1
+        header_row2 = 1
+        header_row3 = 1
+        for hcol in range(0, s.ncols):
+            headers.append(s.cell(header_row, hcol).value)
+                        
+        result.append(headers)
+        
+        # # value rows
+        for row in range(header_row + 1, s.nrows):
+            values = []
+            for col in range(0, s.ncols):
+                values.append(s.cell(row, col).value)
+            result.append(values)
+        #s1
+        # print range(0, s1.ncols),range(1, s1.ncols),'error'
+        for hcol in range(0, s1.ncols):
+            headers1.append(s1.cell(header_row1, hcol).value)
+                        
+        result1.append(headers1)
+        
+        # # value rows
+        for row in range(header_row1 + 1, s1.nrows):
+            values = []
+            for col in range(0, s1.ncols):
+                values.append(s1.cell(row, col).value)
+            result1.append(values)
+        #s2
+        for hcol in range(0, s2.ncols):
+            headers2.append(s2.cell(header_row2, hcol).value)
+                        
+        result2.append(headers2)
+        
+        # # value rows
+        for row in range(header_row2 + 1, s2.nrows):
+            values = []
+            for col in range(0, s2.ncols):
+                values.append(s2.cell(row, col).value)
+            result2.append(values)
+        #s3
+        for hcol in range(0, s3.ncols):
+            headers3.append(s3.cell(header_row3, hcol).value)
+                        
+        result3.append(headers3)
+        
+        # # value rows
+        for row in range(header_row3 + 1, s3.nrows):
+            values = []
+            for col in range(0, s3.ncols):
+                values.append(s3.cell(row, col).value)
+            result3.append(values)
+
+        return result,result1,result2,result3
